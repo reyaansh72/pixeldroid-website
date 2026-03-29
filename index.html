@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PixelDroid GSI | Samsung A12</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: black;
+    color: white;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  .section {
+    min-height: 100vh;
+    padding: 100px 20px;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Background Overlays */
+  .bg1 { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('bg1.png'); }
+  .bg2 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('bg2.png'); }
+  .bg3 { background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('bg3.png'); }
+
+  /* Transparent Top Bar */
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 50px;
+    align-items: center;
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    background: transparent;
+    z-index: 100;
+  }
+
+  .glass {
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  /* Buttons Styling */
+  .btn {
+    background: white;
+    color: black;
+    padding: 14px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn:hover { transform: scale(1.08); box-shadow: 0 10px 25px rgba(255,255,255,0.2); }
+
+  .hero { text-align: center; }
+  .hero h1 { font-size: clamp(45px, 10vw, 75px); margin-bottom: 15px; letter-spacing: -2px; }
+  .hero p { font-size: 22px; opacity: 0.9; }
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+  }
+
+  .screens {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+
+  .screens img {
+    width: 240px;
+    border-radius: 18px;
+    transition: 0.4s;
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  
+  .screens img:hover { transform: translateY(-10px); border-color: white; }
+
+  /* Back to Top Feature */
+  #backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.4s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+  }
+
+  #backToTop.show { opacity: 1; visibility: visible; }
+  #backToTop:hover { background: white; color: black; }
+
+  /* Animations */
+  .reveal { opacity: 0; transform: translateY(50px); transition: 0.9s ease-out; }
+  .reveal.active { opacity: 1; transform: translateY(0); }
+
+  .icon { width: 20px; height: 20px; margin-right: 12px; fill: currentColor; }
+  hr { border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 40px 0; }
+</style>
+</head>
+
+<body>
+
+<div class="nav">
+  <h2 style="margin:0; font-weight: 800;">PixelDroid</h2>
+  <a href="#download" class="btn">Download</a>
+</div>
+
+<div class="section bg1">
+  <div class="hero reveal">
+    <h1>PixelDroid GSI</h1>
+    <p>A smooth, clean experience for your Galaxy A12</p>
+  </div>
+</div>
+
+<div class="section bg2">
+  <div class="glass reveal" style="max-width:1000px; margin:auto; width:90%;">
+    <h2 style="text-align:center;">What is PixelDroid?</h2>
+    <p style="text-align:center; font-size: 18px;">A custom operating system focused on making your device faster, cleaner, and more reliable for daily use.</p>
+
+    <div class="features">
+        <div class="glass" style="background: rgba(255,255,255,0.03);">
+            <h3>🚀 Fast & Smooth</h3>
+            <p>Tuned specifically for the Galaxy A12 to reduce lag and improve responsiveness.</p>
+        </div>
+        <div class="glass" style="background: rgba(255,255,255,0.03);">
+            <h3>🔋 Long Battery Life</h3>
+            <p>Minimal background processes to help your phone last throughout the day.</p>
+        </div>
+    </div>
+
+    <hr>
+
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <div class="glass" style="text-align:center; width: 100%; max-width: 450px; background: rgba(255,255,255,0.05);">
+        <h2 style="margin-top:0;">Developer</h2>
+        <h3 style="margin-bottom:5px; color:white;">Reyaansh</h3>
+        <p style="margin-bottom:25px;">Maintaining the best experience for A12 users.</p>
+        <a href="https://github.com/reyaansh72" target="_blank" class="btn">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section bg1">
+  <div class="glass reveal" style="max-width: 1200px; margin: auto; width: 95%;">
+    <h2 style="text-align:center; font-size: 32px;">Screenshots</h2>
+    <div class="screens">
+      <img src="screen1.png" alt="UI Look 1">
+      <img src="screen2.png" alt="UI Look 2">
+      <img src="screen3.png" alt="UI Look 3">
+      <img src="screen4.png" alt="UI Look 4">
+    </div>
+  </div>
+</div>
+
+<div class="section bg3" id="download">
+  <div class="glass reveal" style="max-width: 850px; margin: auto; width: 90%;">
+    <h2 style="text-align:center; font-size: 36px;">Download Builds</h2>
+    <div id="versions">
+      </div>
+  </div>
+</div>
+
+<div id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+
+<script>
+async function loadVersions() {
+  const container = document.getElementById("versions");
+  try {
+    const res = await fetch("versions.txt?v=" + new Date().getTime());
+    const text = await res.text();
+
+    text.split("\n").forEach(line => {
+      if (!line.trim()) return;
+      const parts = line.split("|");
+      if (parts.length < 4) return;
+
+      const name = parts[0].trim();
+      const android = parts[1].trim();
+      const size = parts[2].trim();
+      let rawUrl = parts[3].trim();
+
+      // Ensure the URL is absolute to avoid localhost redirection
+      if (!rawUrl.startsWith('http')) {
+          rawUrl = 'https://' + rawUrl;
+      }
+
+      const div = document.createElement("div");
+      div.className = "glass reveal";
+      div.style.margin = "20px 0";
+      div.style.textAlign = "center";
+      div.innerHTML = `
+        <h3 style="margin-bottom:5px;">${name}</h3>
+        <p style="margin-bottom:20px;">Android Version ${android} • ${size}</p>
+        <a href="${rawUrl}" target="_blank" class="btn" style="background: #34a853; color: white;">Download Build</a>
+      `;
+      container.appendChild(div);
+    });
+    reveal(); 
+  } catch (e) {
+    container.innerHTML = "<p style='text-align:center;'>Check back later for new updates.</p>";
+  }
+}
+
+function reveal() {
+  const btt = document.getElementById("backToTop");
+  if (window.scrollY > 400) { btt.classList.add("show"); } else { btt.classList.remove("show"); }
+
+  document.querySelectorAll(".reveal").forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 80) {
+      el.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", reveal);
+window.addEventListener("load", () => {
+  loadVersions();
+  reveal();
+});
+</script>
+
+</body>
+</html>
